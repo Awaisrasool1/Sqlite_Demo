@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Alert,
-} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {openDatabase} from 'react-native-sqlite-storage';
 import style from './style';

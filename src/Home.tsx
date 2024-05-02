@@ -2,7 +2,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
   Alert,
   FlatList,
   ScrollView,
@@ -11,6 +10,7 @@ import {
 import React, {useEffect, useState} from 'react';
 import {openDatabase} from 'react-native-sqlite-storage';
 var db = openDatabase({name: 'UserDatabase1.db'});
+import style from './style';
 
 export default function Home(props: any) {
   const [getUserData, setGetUserData] = useState([]);
@@ -94,58 +94,18 @@ export default function Home(props: any) {
           />
         </ScrollView>
         <View>
-        <View style={style.innerContainer}>
-          <TouchableOpacity onPress={() => props.setUserFlag(4)}>
-            <Text style={style.btn}>File Downloader</Text>
-          </TouchableOpacity>
+          <View style={style.innerContainer}>
+            <TouchableOpacity onPress={() => props.setUserFlag(4)}>
+              <Text style={style.btn}>File Downloader</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={style.innerContainer}>
+            <TouchableOpacity onPress={() => props.setUserFlag(1)}>
+              <Text style={style.btn}>Add New User</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={style.innerContainer}>
-          <TouchableOpacity onPress={() => props.setUserFlag(1)}>
-            <Text style={style.btn}>Add New User</Text>
-          </TouchableOpacity>
-        </View>
-        </View>
-    
       </View>
     </>
   );
 }
-
-const style = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%',
-  },
-  innerContainer: {
-    // height: '40%',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    marginBottom: 20,
-  },
-  btn: {
-    fontSize: 16,
-    fontWeight: '700',
-    padding: 15,
-    color: 'white',
-    backgroundColor: 'purple',
-    marginRight: 20,
-    borderRadius: 25,
-  },
-  userData: {
-    width: '100%',
-    padding: 10,
-  },
-  userInnerData: {
-    width: '100%',
-    height: 50,
-    backgroundColor: '#f2f2f2',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
-});

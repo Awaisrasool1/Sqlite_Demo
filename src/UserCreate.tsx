@@ -1,17 +1,10 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Alert,
-} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {openDatabase} from 'react-native-sqlite-storage';
 import Home from './Home';
 import UserUpdate from './UserUpdate';
 import PDFDownload from './PDFDownload';
-// import style from './style'
+import style from './style';
 var db = openDatabase({name: 'UserDatabase1.db'});
 
 export default function UserCreate(props: any) {
@@ -94,10 +87,10 @@ export default function UserCreate(props: any) {
             <Text style={style.formBtn}>Save User</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>setUserFlag(2)}>
+          <TouchableOpacity onPress={() => setUserFlag(2)}>
             <Text style={style.homeText}>
               Go to
-              <Text style={{color: 'purple'}}>{" "}Home Screen</Text>
+              <Text style={{color: 'purple'}}> Home Screen</Text>
             </Text>
           </TouchableOpacity>
         </View>
@@ -119,46 +112,8 @@ export default function UserCreate(props: any) {
           id={id}
         />
       ) : (
-        UserFlag == 4 && <PDFDownload />
+        UserFlag == 4 && <PDFDownload setUserFlag={setUserFlag}/>
       )}
     </>
   );
 }
-
-const style = StyleSheet.create({
-  lebel: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: 'black',
-    marginTop: 20,
-    marginLeft: 10,
-    marginBottom: 5,
-  },
-  input: {
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'gray',
-    paddingLeft: 10,
-    fontSize: 14,
-    color: 'black',
-    fontWeight: '700',
-  },
-  formBtn: {
-    backgroundColor: 'purple',
-    padding: 15,
-    borderRadius: 10,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '700',
-    marginTop: 25,
-  },
-  homeText: {
-    textAlign: 'center',
-    marginTop: 10,
-    fontSize: 16,
-    fontWeight: '800',
-    color: 'black',
-  },
-});
