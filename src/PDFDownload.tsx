@@ -1,14 +1,7 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  PermissionsAndroid,
-  Alert,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, Alert} from 'react-native';
 import React, {useState} from 'react';
 import RNFetchBlob from 'rn-fetch-blob';
+import style from './style';
 
 export default function PDFDownload(props: any) {
   const [url, setUrl] = useState('');
@@ -32,27 +25,17 @@ export default function PDFDownload(props: any) {
     })
       .fetch('GET', url, {})
       .then(res => {
+        setUrl('');
         Alert.alert('Download Successfuly');
       });
   };
   return (
-    <View
-      style={{
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
+    <View style={style.PDFContainer}>
       <TextInput
         placeholder="Enter Url"
         onChangeText={(e: any) => setUrl(e)}
-        style={{
-          borderWidth: 1,
-          color: 'gray',
-          width: '90%',
-          borderRadius: 10,
-          paddingLeft: 10,
-        }}
+        value={url}
+        style={style.pdfInput}
       />
       <TouchableOpacity
         style={{width: '90%', marginTop: 20}}
@@ -63,19 +46,7 @@ export default function PDFDownload(props: any) {
             Alert.alert('Please Enter Url');
           }
         }}>
-        <Text
-          style={{
-            backgroundColor: 'purple',
-            textAlign: 'center',
-            textAlignVertical: 'center',
-            padding: 10,
-            color: 'white',
-            fontSize: 16,
-            fontWeight: '600',
-            borderRadius: 10,
-          }}>
-          Download
-        </Text>
+        <Text style={style.pdfBtn}>Download</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => props.setUserFlag(2)}>
         <Text style={style.homeText}>
@@ -86,13 +57,3 @@ export default function PDFDownload(props: any) {
     </View>
   );
 }
-
-const style = StyleSheet.create({
-  homeText: {
-    textAlign: 'center',
-    marginTop: 10,
-    fontSize: 16,
-    fontWeight: '800',
-    color: 'black',
-  },
-});

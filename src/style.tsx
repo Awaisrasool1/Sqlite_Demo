@@ -72,6 +72,32 @@ const style = StyleSheet.create({
     width: 24,
     height: 24,
   },
+  PDFContainer: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pdfInput: {
+    borderWidth: 1,
+    color: 'black',
+    width: '90%',
+    borderRadius: 10,
+    paddingLeft: 10,
+    fontSize: 14,
+    fontWeight: '700',
+    borderColor: 'gray',
+  },
+  pdfBtn:{
+    backgroundColor: 'purple',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    padding: 10,
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+    borderRadius: 10,
+  }
 });
 
 export default style;
